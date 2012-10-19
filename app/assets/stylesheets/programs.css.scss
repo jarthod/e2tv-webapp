@@ -1,0 +1,120 @@
+// Place all the styles related to the Programs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "compass";
+@import "compass/reset";
+
+$blue: #368;
+
+body {
+  background-color: #111;
+  color: white;
+  margin: 0;
+  padding: 2%;
+  font-size: 1.2em;
+  font-family: "Droid Sans", "sans-serif";
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+input, .programs a {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 4px solid #333;
+  @include border-radius(0.3em);
+  font-family: "Droid Sans", "sans-serif";
+  &:focus, &:active {
+    border-color: $blue;
+    outline: none;
+    @include box-shadow(0 0 1em $blue);
+    z-index: 2;
+  }
+}
+
+.programs {
+  margin: 0 -2%;
+  a {
+    position: relative;
+    display: block;
+    float: left;
+    width: 30%;
+    margin-left: 2%;
+    height: 7em;
+    overflow: hidden;
+    background-color: transparent;
+    img {
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+    h2 {
+      background-color: rgba(0, 0, 0, 0.8);
+      line-height: 1.5em;
+      padding: 0.5em 0.7em;
+      .year {
+        float: right;
+        color: #888;
+      }
+    }
+  }
+}
+
+#search {
+  input {
+    width: 96%;
+    padding: 0.5em 0.6em;
+    font-size: 1.3em;
+    color: white;
+  }
+  margin-bottom: 1em;
+}
+
+#recent {
+  @include clearfix;
+  margin-bottom: 1em;
+  .programs {
+    a {
+
+    }
+  }
+}
+
+#tv {
+  @include clearfix;
+  border-left: 2px solid #222;
+  border-right: 2px solid #222;
+  .grid {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    .container {
+      margin-left: -10%;
+      width: 400%;
+      .programs {
+        position: relative;
+        height: 5.5em;
+        padding-top: 0.1em;
+        a {
+          position: absolute;
+          height: 5em;
+          @include border-radius(0);
+          img {
+            height: 100%;
+            width: auto;
+          }
+        }
+      }
+    }
+    .shade {
+      @include box-shadow(2.3em 0 2em -2em black inset, -2.3em 0 2em -2em black inset);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

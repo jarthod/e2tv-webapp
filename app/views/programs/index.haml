@@ -1,0 +1,33 @@
+%section#search
+  = form_tag 'search' do
+    = text_field_tag 'q', '', :placeholder => 'Search...'
+%section#recent
+  .programs
+    = link_to '/' do
+      = image_tag '/cover.jpg'
+      %h2
+        Batman Begins
+        .year 2005
+    = link_to '/' do
+      = image_tag '/cover.jpg'
+      %h2
+        Mission: Impossible
+        .year 2011
+    = link_to '/' do
+      = image_tag '/cover.jpg'
+      %h2
+        The Expendables 2
+        .year 2012
+%section#tv
+  .grid
+    .container
+      - 5.times do |program|
+        .programs
+          - start = 0;
+          - 20.times do |i|
+            - width = rand(1..5)
+            = link_to '/', :style => "width: #{width-0.05}%; left: #{start}%" do
+              = image_tag '/cover.jpg'
+              %h2 title
+            - start += width
+    .shade

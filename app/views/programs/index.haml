@@ -21,12 +21,12 @@
 %section#tv
   .grid
     .container
-      - 5.times do |program|
+      - 10.times do |program|
         .programs
           - start = 0;
           - 20.times do |i|
             - width = rand(1..5)
-            = link_to '/', :style => "width: #{width-0.05}%; left: #{start}%" do
+            = link_to '/', :style => "width: #{width-0.08}%; left: #{start}%" do
               = image_tag '/cover.jpg'
               %h2 title
             - start += width

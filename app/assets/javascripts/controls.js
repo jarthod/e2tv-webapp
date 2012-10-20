@@ -28,7 +28,7 @@ $().ready(function() {
     else if (event.keyCode == 38) // go up
     {
       var section = current.closest('section');
-      if (section.attr('id') == 'recent') {
+      if (section.attr('id') == 'recent' || section.attr('id') == 'results') {
         current.removeClass('current');
         $('#search input').focus();
       } else if (section.attr('id') == 'tv') {
@@ -50,7 +50,7 @@ $().ready(function() {
       var section = current.closest('section');
       if (section.attr('id') == 'search') {
         current.removeClass('current');
-        $('#recent a').first().focus();
+        $('#recent a, #results a').first().focus();
       } else if (section.attr('id') == 'recent') {
         focus_good_link(current, $('#tv .programs:first-child').first());
       } else if (section.attr('id') == 'tv') {
@@ -62,5 +62,5 @@ $().ready(function() {
     }
   });
 
-  $('#recent a').first().focus();
+  $('#recent a, #results a').first().focus();
 });

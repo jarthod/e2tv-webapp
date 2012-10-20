@@ -5,14 +5,14 @@
 @import "compass";
 @import "compass/reset";
 
-$blue: #368;
+$blue: #369;
 
 body {
   background-color: #111;
   color: white;
   margin: 0;
   padding: 2%;
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: "Droid Sans", "sans-serif";
   overflow:hidden;
 }
@@ -55,7 +55,7 @@ input, .programs a {
       background-color: rgba(0, 0, 0, 0.8);
       line-height: 1.5em;
       padding: 0.5em 0.7em;
-      .year {
+      .year, .type {
         float: right;
         color: #888;
       }
@@ -65,7 +65,7 @@ input, .programs a {
 
 #search {
   input {
-    width: 96%;
+    width: 96.5%;
     padding: 0.5em 0.6em;
     font-size: 1.3em;
     color: white;
@@ -83,24 +83,26 @@ input, .programs a {
   }
 }
 
+#results {
+
+}
+
 #tv {
   @include clearfix;
   border-left: 2px solid #222;
   border-right: 2px solid #222;
   .grid {
-    width: 100%;
-    overflow-x: hidden;
     position: relative;
     .container {
       margin-left: -10%;
       width: 400%;
       .programs {
         position: relative;
-        height: 5.5em;
+        height: 4.1em;
         padding-top: 0.1em;
         a {
           position: absolute;
-          height: 5em;
+          height: 4em;
           @include border-radius(0);
           img {
             height: 100%;

@@ -1,0 +1,15 @@
+!!!
+%head
+  :css
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  =javascript_include_tag "video.js"
+  =stylesheet_link_tag "video-js.css"
+  =stylesheet_link_tag "video-js-skin.css"
+%body
+  %section
+    %video{:class => "video-js vjs-tv-skin", :controls => true, :autoplay => "true", :preload => "auto", :width => "1920", :height => "1080", :"data-setup" => "{}"}
+      %source{:src => params[:url], :type => "video/mp4"}

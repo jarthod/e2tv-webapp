@@ -38,12 +38,15 @@ if __name__ == '__main__':
         chan = {"name": k, "programs": []}
         data = get_channel_prog(v)
         for i in data['results']:
-            prog = {}
+            prog = {'pluzz': []}
             prog['from'] = str(datetime.datetime.strptime(i['starts_at'], "%Y-%m-%dT%H:%M:00+02:00"))
             prog['to']   = str(datetime.datetime.strptime(i['ends_at'], "%Y-%m-%dT%H:%M:00+02:00"))
             prog['name'] = i['title']
             prog['photos'] = i['program']['photo']
-            prog['pluzz'] = i['program']['_providers']['pluzz']['replay_url'] if 'pluzz' in i['program']['_providers'] else None
+            pprint(i)
+            for c in i['program']['collections']:
+                if 'url_pluzz_replay' in c and c['url_pluzz_replay']:
+                    prog['pluzz'].append(c['url_pluzz_replay'])
             chan['programs'].append(prog)
         res['channels'].append(chan)
     pprint(res)

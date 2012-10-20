@@ -1,5 +1,5 @@
 .programs
-  - @torrents[0..2].each do |torrent|
+  - @torrents.sort {|t| t.id}[0..2].each do |torrent|
     - file = Torrent::get_file(torrent)
     - url = torrent.percentDone < 1 ? '#' : player_path(:url => "http://#{TORRENT_SERVER}/#{u file['name']}")
     = link_to url, :id => "torrent-#{torrent.id}", :class => ('disabled' if torrent.percentDone < 1 ) do

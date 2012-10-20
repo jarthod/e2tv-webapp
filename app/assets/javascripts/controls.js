@@ -35,6 +35,9 @@ $().ready(function() {
           current.prev().prev().prev().focus();
         else
           $('#search input').focus();
+      } else if (section.attr('id') == 'sources') {
+        if (current.prev().length > 0)
+          current.prev().focus();
       } else if (section.attr('id') == 'tv') {
         var program = current.closest('.programs');
         if (program.prev().length > 0) {
@@ -57,6 +60,9 @@ $().ready(function() {
         $('#recent a, #results a').first().focus();
       } else if (section.attr('id') == 'recent') {
         focus_good_link(current, $('#tv .programs:first-child').first());
+      } else if (section.attr('id') == 'sources') {
+        if (current.next().length > 0)
+          current.next().focus();
       } else if (section.attr('id') == 'results') {
         if (current.next().next().next().length > 0)
           current.next().next().next().focus();
@@ -69,5 +75,5 @@ $().ready(function() {
     }
   });
 
-  $('#recent a, #results a').first().focus();
+  $('#recent a, #results a, #sources a').first().focus();
 });

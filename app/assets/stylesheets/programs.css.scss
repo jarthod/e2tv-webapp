@@ -16,6 +16,7 @@ body {
   font-size: 1em;
   font-family: "Droid Sans", "sans-serif";
   overflow:hidden;
+  @include text-shadow(0 2px 0.2em black);
 }
 
 a {
@@ -87,6 +88,15 @@ input, .programs a {
   }
 }
 
+img.bg {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.2;
+}
+
 #search {
   input {
     width: 96.5%;
@@ -116,13 +126,13 @@ input, .programs a {
       width: 90%;
       margin-top: 2.4em;
       &.youtube img {
-        margin-top: -5em;
+        margin-top: -5.5em;
       }
       &.netflix img {
-        margin-top: -3em;
+        margin-top: -3.3em;
       }
       &.torrent img {
-        margin-top: -3em;
+        margin-top: -3.4em;
       }
     }
   }

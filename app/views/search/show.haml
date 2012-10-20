@@ -1,27 +1,40 @@
+- if @bg.present?
+  = image_tag @bg, :class => 'bg'
 %section#cover
   %h1= @details['name']
   %p.directors= @details['directed_by'].join(', ')
-  = image_tag "https://usercontent.googleapis.com/freebase/v1/image#{@image}?maxwidth=500"
+  - if @poster.present?
+    = image_tag @poster
+  - else
+    = image_tag "https://usercontent.googleapis.com/freebase/v1/image#{@image}?maxwidth=500"
 %section#sources
   .programs
     = link_to (@trailer ? @trailer['url'] : '#'), :class => ['youtube', ('disabled' if @trailer.nil?)].join(' ') do
       = image_tag "youtube-logo.jpg"
-      %h2 Youtube Tailer
+      %h2
+        Trailer
+        - if @trailer.nil?
+          .type not available
     - if @streaming.present?
       = link_to '#', :class => 'netflix' do
         = image_tag "netflix-logo.png"
-        %h2 Netflix streaming
+        %h2 Streaming
     - elsif @rental.present?
-      = link_to '#', :class => 'netflix disabled' do
+      = link_to '#', :class => 'netflix' do
         = image_tag "netflix-logo.png"
-        %h2 Netflix rental
+        %h2 Rental
     - else
       = link_to '#', :class => 'netflix disabled' do
         = image_tag "netflix-logo.png"
-        %h2 Netflix
+        %h2
+          Streaming
+          .type not available
     - torrent = @torrents.sort {|t| t['seed']}.last if @torrents.any?
-    = link_to (torrent ? torrent['url'] : '#'), :class => ['torrent', ('disabled' if torrent.nil?)].join(' ') do
+    = link_to (torrent ? download_path(:url => torrent['url']) : '#'), :class => ['torrent', ('disabled' if torrent.nil?)].join(' ') do
       = image_tag "movies_io-logo.png"
       %h2
-        Movies.io
-        .type= torrent['quality'] if torrent.present?
+        Download
+        - if torrent.present?
+          .type= torrent['quality']
+        - else
+          .type not available

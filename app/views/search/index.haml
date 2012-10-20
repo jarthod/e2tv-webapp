@@ -6,8 +6,10 @@
     - @results.each do |result|
       - type = result['type'].include?('/film/film') ? :film : :tv
       - image_id = (result['/common/topic/image'].first || {})['id']
-      = link_to search_path(:type => type, :id => u(result['mid'])) do
-        - if image_id
+      = link_to (type == :film ? search_path(:type => type, :id => u(result['mid'])) : '#'), :class => ('disabled' if type == :tv) do
+        - if @poster.present?
+          = image_tag @poster
+        - elsif image_id
           = image_tag "https://usercontent.googleapis.com/freebase/v1/image#{image_id}?maxwidth=500"
         %h2
           = result['name']

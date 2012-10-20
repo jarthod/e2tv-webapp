@@ -1,3 +1,5 @@
+require 'timeout'
+
 module Torrent
   def self.init(ip, port = nil, path = nil)
   	Transmission.configuration.ip = ip
@@ -5,7 +7,11 @@ module Torrent
   end
 
   def self.get_all
-  	Transmission.torrents
+    Timeout::timeout(3) {
+    	Transmission.torrents
+    }
+  rescue
+    []
   end
 
   def self.get_file(torrent)
@@ -13,6 +19,6 @@ module Torrent
   end
 
   def self.add(magnet)
-	Transmission::RPC::Torrent.add :url => magnet
+	  Transmission::RPC::Torrent.add :url => magnet
   end
 end

@@ -11,4 +11,8 @@ module Torrent
   def self.get_file(torrent_id)
   	Transmission.torrents.find {|f| f.id == 3} .files.sort {|f| f['length']}.last
   end
+
+  def self.add(magnet)
+	Transmission::RPC::Torrent.add :url => magnet
+  end
 end

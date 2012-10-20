@@ -5,18 +5,23 @@
 %section#sources
   .programs
     = link_to (@trailer ? @trailer['url'] : '#'), :class => ['youtube', ('disabled' if @trailer.nil?)].join(' ') do
+      = image_tag "youtube-logo.jpg"
       %h2 Youtube Tailer
     - if @streaming.present?
       = link_to '#', :class => 'netflix' do
+        = image_tag "netflix-logo.png"
         %h2 Netflix streaming
     - elsif @rental.present?
-      = link_to 'http://netflix.com', :class => 'netflix' do
+      = link_to '#', :class => 'netflix disabled' do
+        = image_tag "netflix-logo.png"
         %h2 Netflix rental
     - else
       = link_to '#', :class => 'netflix disabled' do
+        = image_tag "netflix-logo.png"
         %h2 Netflix
     - torrent = @torrents.sort {|t| t['seed']}.last if @torrents.any?
     = link_to (torrent ? torrent['url'] : '#'), :class => ['torrent', ('disabled' if torrent.nil?)].join(' ') do
+      = image_tag "movies_io-logo.png"
       %h2
         Movies.io
-        .type= torrent['quality']
+        .type= torrent['quality'] if torrent.present?

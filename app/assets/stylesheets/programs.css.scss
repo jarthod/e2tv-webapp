@@ -31,7 +31,7 @@ h1 {
 p.directors {
   color: #999;
   margin-top: -1em;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 
 input, .programs a {
@@ -98,23 +98,32 @@ input, .programs a {
 }
 
 #cover {
-  width: 25%;
+  width: 35%;
   float: left;
-  margin-left: 10%;
+  margin-left: 8%;
   img {
-    width: 80%;
-    margin-top: 2em;
+    width: 60%;
+    margin-top: 1em;
   }
 }
 
 #sources {
-  width: 55%;
+  width: 45%;
   float: left;
-  margin-left: 10%;
+  margin-left: 5%;
   .programs {
     a {
-      width: 70%;
-      margin-top: 2.5em;
+      width: 90%;
+      margin-top: 2.4em;
+      &.youtube img {
+        margin-top: -5em;
+      }
+      &.netflix img {
+        margin-top: -3em;
+      }
+      &.torrent img {
+        margin-top: -3em;
+      }
     }
   }
 }

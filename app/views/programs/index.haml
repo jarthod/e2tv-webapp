@@ -3,21 +3,17 @@
     = text_field_tag 'q', '', :placeholder => 'Search...'
 %section#recent
   .programs
-    = link_to '/' do
-      = image_tag '/cover.jpg'
-      %h2
-        Batman Begins
-        .year 2005
-    = link_to '/' do
-      = image_tag '/cover.jpg'
-      %h2
-        Mission: Impossible
-        .year 2011
-    = link_to '/' do
-      = image_tag '/cover.jpg'
-      %h2
-        The Expendables 2
-        .year 2012
+    - @torrents.each do |torrent|
+      = link_to '/' do
+        = image_tag '/cover.jpg'
+        %h2
+          = truncate torrent.name, :length => 60
+          .size= number_to_human_size torrent.total_size
+        .details
+          - if torrent.percentDone < 1
+            .download= "%.1f %%" % (torrent.percentDone * 100)
+          - else
+            .ready ready
 %section#tv
   .grid
     .container

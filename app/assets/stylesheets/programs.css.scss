@@ -52,10 +52,12 @@ input, .programs a {
       z-index: -1;
     }
     h2 {
+      @include clearfix;
+      word-wrap: break-word;
       background-color: rgba(0, 0, 0, 0.8);
       line-height: 1.5em;
       padding: 0.5em 0.7em;
-      .year, .type {
+      .year, .type, .size {
         float: right;
         color: #888;
       }
@@ -78,7 +80,22 @@ input, .programs a {
   height: 7.5em;
   .programs {
     a {
-
+      .details {
+        font-size: 0.9em;
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 0.7em 1em;
+        background-color: rgba(0, 0, 0, 0.8);
+        @include border-top-right-radius(0.7em);
+        .ready {
+          color: #6f3;
+        }
+        .download {
+          color: #f90;
+        }
+      }
     }
   }
 }

@@ -24,9 +24,9 @@ def get_json(url):
     return json.load(u)
 
 def get_channel_prog(chan_id):
-    _from = datetime.datetime.now() - datetime.timedelta(hours=2)
+    _from = datetime.datetime.now() - datetime.timedelta(hours=4)
     _from = _from.isoformat()
-    to = datetime.datetime.now() + datetime.timedelta(hours=2)
+    to = datetime.datetime.now() + datetime.timedelta(hours=4)
     to = to.isoformat()
     url = "http://pgep.francetv.fr/broadcasts/?filters=channel:%s&format=json&from=%s&to=%s" % (chan_id, _from, to)
     return get_json(url)
@@ -46,4 +46,4 @@ if __name__ == '__main__':
             prog['pluzz'] = i['program']['_providers']['pluzz']['replay_url'] if 'pluzz' in i['program']['_providers'] else None
             chan['programs'].append(prog)
         res['channels'].append(chan)
-    pprint(res)
+    print(json.dumps(res))

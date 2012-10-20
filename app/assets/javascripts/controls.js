@@ -19,7 +19,7 @@ $().ready(function() {
       event.preventDefault();
   });
   $(document.documentElement).keyup(function (event) {
-    var current = $("*:focus")
+    var current = $("*:focus");
     if (event.keyCode == 37) // go left
     {
       if (current.prev().length > 0)

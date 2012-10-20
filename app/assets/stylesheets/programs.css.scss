@@ -27,6 +27,10 @@ a {
 h1 {
   font-size: 2.5em;
   margin: 1em 0;
+  &.error {
+    text-align: center;
+    margin-top: 3em;
+  }
 }
 
 p.directors {
@@ -91,6 +95,7 @@ input, .programs a {
 img.bg {
   position: absolute;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   z-index: -1;
@@ -143,6 +148,9 @@ img.bg {
   height: 7.5em;
   .programs {
     a {
+      img {
+        margin-top: -2em;
+      }
       .details {
         font-size: 0.9em;
         font-weight: bold;

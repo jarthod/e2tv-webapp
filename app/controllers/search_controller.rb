@@ -20,6 +20,9 @@ class SearchController < ApplicationController
     @rental = @sources['sources'].select {|s| s['kind'] == 'Rental'}.first
     @streaming = @sources['sources'].select {|s| s['kind'] == 'Streaming'}.first
     @torrents = @sources['sources'].select {|s| s['kind'] == 'Torrent'}
+    @torrents.map {|t| t['filename']}.each do |filename|
+      Rails.cache.write(filename, @bg)
+    end
   end
 
 end

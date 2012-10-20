@@ -1,20 +1,24 @@
 %section#search
   = form_tag 'search' do
     = text_field_tag 'q', params[:q], :placeholder => 'Search...'
-%section#results
-  .programs
-    - @results.each do |result|
-      - type = result['type'].include?('/film/film') ? :film : :tv
-      - image_id = (result['/common/topic/image'].first || {})['id']
-      = link_to (type == :film ? search_path(:type => type, :id => u(result['mid'])) : '#'), :class => ('disabled' if type == :tv) do
-        - if @poster.present?
-          = image_tag @poster
-        - elsif image_id
-          = image_tag "https://usercontent.googleapis.com/freebase/v1/image#{image_id}?maxwidth=500"
-        %h2
-          = result['name']
-          .type
-            - if type == :film
-              Movie
-            - else
-              TV Show
+- if @results.is_a? Array
+  %section#results
+    .programs
+      - @results.each do |result|
+        - type = result['type'].include?('/film/film') ? :film : :tv
+        - image_id = (result['/common/topic/image'].first || {})['id']
+        = link_to (type == :film ? search_path(:type => type, :id => u(result['mid'])) : '#'), :class => ('disabled' if type == :tv) do
+          - if @poster.present?
+            = image_tag @poster
+          - elsif image_id
+            = image_tag "https://usercontent.googleapis.com/freebase/v1/image#{image_id}?maxwidth=500"
+          %h2
+            = result['name']
+            .type
+              - if type == :film
+                Movie
+              - else
+                TV Show
+- else
+  %h1.error Network error
+  - Rails.cache.delete("search#index:#{params[:q]}")

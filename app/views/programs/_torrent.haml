@@ -3,7 +3,7 @@
     - file = Torrent::get_file(torrent)
     - url = torrent.percentDone < 1 ? '#' : player_path(:url => "http://#{TORRENT_SERVER}/#{u file['name']}")
     = link_to url, :id => "torrent-#{torrent.id}", :class => ('disabled' if torrent.percentDone < 1 ) do
-      = image_tag '/cover.jpg'
+      = image_tag Rails.cache.read(torrent.name) || 'film-reel.jpg'
       %h2
         = truncate torrent.name, :length => 60
         .size= number_to_human_size torrent.total_size

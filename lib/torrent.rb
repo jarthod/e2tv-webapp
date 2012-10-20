@@ -15,7 +15,7 @@ module Torrent
   end
 
   def self.get_file(torrent)
-  	torrent.files.sort {|f| f['length']}.last
+  	torrent.files.sort {|f1, f2| f1['length'] <=> f2['length']}.last
   end
 
   def self.add(magnet)

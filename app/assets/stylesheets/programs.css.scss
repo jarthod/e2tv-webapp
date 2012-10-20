@@ -23,6 +23,17 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-size: 2.5em;
+  margin: 1em 0;
+}
+
+p.directors {
+  color: #999;
+  margin-top: -1em;
+  margin-bottom: 3em;
+}
+
 input, .programs a {
   background-color: rgba(0, 0, 0, 0.8);
   border: 4px solid #333;
@@ -32,7 +43,8 @@ input, .programs a {
     border-color: $blue;
     outline: none;
     @include box-shadow(0 0 1em $blue);
-    z-index: 2;
+  }
+  &:focus {
   }
 }
 
@@ -83,6 +95,28 @@ input, .programs a {
     color: white;
   }
   margin-bottom: 1em;
+}
+
+#cover {
+  width: 25%;
+  float: left;
+  margin-left: 10%;
+  img {
+    width: 80%;
+    margin-top: 2em;
+  }
+}
+
+#sources {
+  width: 55%;
+  float: left;
+  margin-left: 10%;
+  .programs {
+    a {
+      width: 70%;
+      margin-top: 2.5em;
+    }
+  }
 }
 
 #recent {

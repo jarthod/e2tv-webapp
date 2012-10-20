@@ -1,2 +1,22 @@
-%section#details
-  = @details.inspect
+%section#cover
+  %h1= @details['name']
+  %p.directors= @details['directed_by'].join(', ')
+  = image_tag "https://usercontent.googleapis.com/freebase/v1/image#{@image}?maxwidth=500"
+%section#sources
+  .programs
+    = link_to (@trailer ? @trailer['url'] : '#'), :class => ['youtube', ('disabled' if @trailer.nil?)].join(' ') do
+      %h2 Youtube Tailer
+    - if @streaming.present?
+      = link_to '#', :class => 'netflix' do
+        %h2 Netflix streaming
+    - elsif @rental.present?
+      = link_to 'http://netflix.com', :class => 'netflix' do
+        %h2 Netflix rental
+    - else
+      = link_to '#', :class => 'netflix disabled' do
+        %h2 Netflix
+    - torrent = @torrents.sort {|t| t['seed']}.last if @torrents.any?
+    = link_to (torrent ? torrent['url'] : '#'), :class => ['torrent', ('disabled' if torrent.nil?)].join(' ') do
+      %h2
+        Movies.io
+        .type= torrent['quality']

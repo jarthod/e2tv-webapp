@@ -4,11 +4,12 @@
 %section#results
   .programs
     - @results.each do |result|
-      = link_to '/' do
+      - type = result['type'].include?('/film/film') ? :film : :tv
+      = link_to search_path(:type => type, :id => u(result['mid'])) do
         %h2
           = result['name']
           .type
-            - if result['type'].include? '/film/film'
+            - if type == :film
               Movie
             - else
-              Show
+              TV Show

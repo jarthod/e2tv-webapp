@@ -3,15 +3,12 @@
     = text_field_tag 'q', params[:q], :placeholder => 'Search...'
 %section#results
   .programs
-    = link_to '/' do
-      %h2
-        Batman Begins
-        .type Movie
-    = link_to '/' do
-      %h2
-        Mission: Impossible
-        .type Show
-    = link_to '/' do
-      %h2
-        The Expendables 2
-        .type Movie
+    - @results.each do |result|
+      = link_to '/' do
+        %h2
+          = result['name']
+          .type
+            - if result['type'].include? '/film/film'
+              Movie
+            - else
+              Show

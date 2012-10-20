@@ -1,5 +1,5 @@
 function focus_good_link(current, row) {
-  current.removeClass('current');
+  current;
   found = false;
   row.find('a').each(function() {
     var pos = $(this).offset();
@@ -15,7 +15,7 @@ function focus_good_link(current, row) {
 
 $().ready(function() {
   $(document.documentElement).keydown(function (event) {
-    if (event.keyCode >= 37 && event.keyCode <= 40 )  // go down
+    if (event.keyCode == 38 || event.keyCode == 40)  // go down
       event.preventDefault();
   });
   $(document.documentElement).keyup(function (event) {
@@ -23,14 +23,18 @@ $().ready(function() {
     if (event.keyCode == 37) // go left
     {
       if (current.prev().length > 0)
-        current.removeClass('current').prev().focus();
+        current.prev().focus();
     }
     else if (event.keyCode == 38) // go up
     {
       var section = current.closest('section');
-      if (section.attr('id') == 'recent' || section.attr('id') == 'results') {
-        current.removeClass('current');
+      if (section.attr('id') == 'recent') {
         $('#search input').focus();
+      } else if (section.attr('id') == 'results') {
+        if (current.prev().prev().prev().length > 0)
+          current.prev().prev().prev().focus();
+        else
+          $('#search input').focus();
       } else if (section.attr('id') == 'tv') {
         var program = current.closest('.programs');
         if (program.prev().length > 0) {
@@ -43,16 +47,19 @@ $().ready(function() {
     else if (event.keyCode == 39) // go right
     {
       if (current.next().length > 0)
-        current.removeClass('current').next().focus();
+        current.next().focus();
     }
     else if (event.keyCode == 40)  // go down
     {
       var section = current.closest('section');
       if (section.attr('id') == 'search') {
-        current.removeClass('current');
+        current;
         $('#recent a, #results a').first().focus();
       } else if (section.attr('id') == 'recent') {
         focus_good_link(current, $('#tv .programs:first-child').first());
+      } else if (section.attr('id') == 'results') {
+        if (current.next().next().next().length > 0)
+          current.next().next().next().focus();
       } else if (section.attr('id') == 'tv') {
         var program = current.closest('.programs');
         if (program.next().length > 0) {

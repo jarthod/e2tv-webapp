@@ -8,8 +8,8 @@ module Torrent
   	Transmission.torrents
   end
 
-  def self.get_file(torrent_id)
-  	Transmission.torrents.find {|f| f.id == 3} .files.sort {|f| f['length']}.last
+  def self.get_file(torrent)
+  	torrent.files.sort {|f| f['length']}.last
   end
 
   def self.add(magnet)

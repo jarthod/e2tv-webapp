@@ -3,8 +3,10 @@
     = text_field_tag 'q', '', :placeholder => 'Search...'
 %section#recent
   .programs
-    - @torrents.each do |torrent|
-      = link_to '/' do
+    - @torrents[0..2].each do |torrent|
+      - file = Torrent::get_file(torrent)
+      - url = torrent.percentDone < 1 ? '#' : "http://#{TORRENT_SERVER}/#{u file['name']}"
+      = link_to url, :class => ('disabled' if torrent.percentDone < 1 ) do
         = image_tag '/cover.jpg'
         %h2
           = truncate torrent.name, :length => 60

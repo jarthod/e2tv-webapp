@@ -6,6 +6,7 @@
 @import "compass/reset";
 
 $blue: #369;
+$orange: #f90;
 
 body {
   background-color: #111;
@@ -62,6 +63,15 @@ input, .programs a {
         color: #888;
       }
     }
+    &.disabled {
+      opacity: 0.6;
+      border-color: black;
+      @include box-shadow(none);
+      &:focus, &:active {
+        border-color: $orange;
+        @include box-shadow(0 0 1em $orange);
+      }
+    }
   }
 }
 
@@ -93,7 +103,7 @@ input, .programs a {
           color: #6f3;
         }
         .download {
-          color: #f90;
+          color: $orange;
         }
       }
     }

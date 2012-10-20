@@ -1,1 +1,2 @@
-Torrent.init("192.168.2.208")
+TORRENT_SERVER = "192.168.2.208"
+Torrent.init(TORRENT_SERVER)

@@ -4,13 +4,13 @@ function focus_good_link(current, row) {
   row.find('a').each(function() {
     var pos = $(this).offset();
     if ((pos.left + $(this).width()) > (current.offset().left + current.width()/2)) {
-      $(this).addClass('current').focus();
+      $(this).focus();
       found = true;
       return false;
     }
   });
   if (!found)
-    row.find('a').last().addClass('current').focus();
+    row.find('a').last().focus();
 };
 
 $().ready(function() {
@@ -19,18 +19,18 @@ $().ready(function() {
       event.preventDefault();
   });
   $(document.documentElement).keyup(function (event) {
-    var current = $('.current')
+    var current = $("*:focus")
     if (event.keyCode == 37) // go left
     {
       if (current.prev().length > 0)
-        current.removeClass('current').prev().addClass('current').focus();
+        current.removeClass('current').prev().focus();
     }
     else if (event.keyCode == 38) // go up
     {
       var section = current.closest('section');
       if (section.attr('id') == 'recent') {
         current.removeClass('current');
-        $('#search input').addClass('current').focus();
+        $('#search input').focus();
       } else if (section.attr('id') == 'tv') {
         var program = current.closest('.programs');
         if (program.prev().length > 0) {
@@ -43,14 +43,14 @@ $().ready(function() {
     else if (event.keyCode == 39) // go right
     {
       if (current.next().length > 0)
-        current.removeClass('current').next().addClass('current').focus();
+        current.removeClass('current').next().focus();
     }
     else if (event.keyCode == 40)  // go down
     {
       var section = current.closest('section');
       if (section.attr('id') == 'search') {
         current.removeClass('current');
-        $('#recent a').first().addClass('current').focus();
+        $('#recent a').first().focus();
       } else if (section.attr('id') == 'recent') {
         focus_good_link(current, $('#tv .programs:first-child').first());
       } else if (section.attr('id') == 'tv') {
@@ -62,5 +62,5 @@ $().ready(function() {
     }
   });
 
-  $('#recent a').first().addClass('current').focus();
+  $('#recent a').first().focus();
 });

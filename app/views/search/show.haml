@@ -1,5 +1,7 @@
 - if @bg.present?
   = image_tag @bg, :class => 'bg'
+- else
+  = image_tag "backdrop-none-w1280.jpg", :class => 'bg'
 %section#cover
   %h1= @details['name']
   %p.directors= (@details['directed_by'] || @details['program_creator'] || []).join(', ')

@@ -1,5 +1,5 @@
 %section#search
-  = form_tag 'search' do
+  = form_tag 'search', :method => :get do
     = text_field_tag 'q', '', :placeholder => 'Search...'
 %section#recent
   = render 'torrent'
@@ -17,6 +17,7 @@
             - width = (to - from) / 300.0
             - start = (from - @start) / 300.0
             - url = show['pluzz'].first
+            - url ||= tvsearch_path(:q => show['name'])
             = link_to (url || '#'), :style => "width: #{width-0.08}%; left: #{start}%", :class => (url ? nil : 'disabled') do
               = image_tag show['photos']["525x296"]
               %h2

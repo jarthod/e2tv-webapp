@@ -1,5 +1,7 @@
 %section#search
-  = form_tag 'search' do
+  = link_to root_path, :class => 'home' do
+    = image_tag 'home.png'
+  = form_tag 'search', :method => :get do
     = text_field_tag 'q', params[:q], :placeholder => 'Search...'
 - if @results.is_a? Array
   %section#results

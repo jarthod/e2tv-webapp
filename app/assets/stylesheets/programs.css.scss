@@ -39,7 +39,7 @@ p.directors {
   margin-bottom: 2em;
 }
 
-input, .programs a {
+input, .programs a, a.home {
   background-color: rgba(0, 0, 0, 0.8);
   border: 4px solid #333;
   @include border-radius(0.3em);
@@ -103,6 +103,20 @@ img.bg {
 }
 
 #search {
+  @include clearfix;
+  a.home {
+    float: left;
+    width: 3%;
+    text-align: center;
+    padding: 0.5em 0.6em;
+    vertical-align: middle;
+    margin: 2px 0;
+    &+form {
+      float: right;
+      width: 93%;
+    }
+
+  }
   input {
     width: 96.5%;
     padding: 0.5em 0.6em;

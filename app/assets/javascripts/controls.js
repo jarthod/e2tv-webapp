@@ -22,8 +22,14 @@ $().ready(function() {
     var current = $("*:focus");
     if (event.keyCode == 37) // go left
     {
-      if (current.prev().length > 0)
-        current.prev().focus();
+      var section = current.closest('section');
+      if (section.attr('id') == 'search') {
+        if (current.parent().prev().length > 0)
+          current.parent().prev().focus();
+      } else {
+        if (current.prev().length > 0)
+          current.prev().focus();
+      }
     }
     else if (event.keyCode == 38) // go up
     {
@@ -49,8 +55,14 @@ $().ready(function() {
     }
     else if (event.keyCode == 39) // go right
     {
-      if (current.next().length > 0)
-        current.next().focus();
+      var section = current.closest('section');
+      if (section.attr('id') == 'search') {
+        if (current.next().find('input').length > 0)
+          current.next().find('input').focus();
+      } else {
+        if (current.next().length > 0)
+          current.next().focus();
+      }
     }
     else if (event.keyCode == 40)  // go down
     {

@@ -16,6 +16,20 @@ class ProgramsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    params[:q] ||= ""
+    @results = Rails.cache.fetch("search#index:#{params[:q]}") do
+      JSON.parse(`../e2tv-api/e2tv --search #{Shellwords.escape(params[:q])}`)
+    end
+    if @results.present? and @results.any?
+      result = @results.first
+      type = result['type'].include?('/film/film') ? :film : :tv
+      redirect_to search_path(:type => type, :id => CGI.escape(result['mid']))
+    else
+      redirect_to root_path
+    end
+  end
+
   def show
   end
 

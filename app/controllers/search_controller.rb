@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 
   def index
+    params[:q] ||= ""
     @results = Rails.cache.fetch("search#index:#{params[:q]}") do
       JSON.parse(`../e2tv-api/e2tv --search #{Shellwords.escape(params[:q])}`)
     end
@@ -13,8 +14,7 @@ class SearchController < ApplicationController
     @sources = Rails.cache.fetch("search#show:sources:#{params[:type]}:#{params[:id]}") do
       JSON.parse(`../e2tv-api/e2tv --sources --#{params[:type]} #{params[:id]}`)
     end
-    @image = (@details['/common/topic/image'].first || {})['id']
-    puts @sources.inspect
+    @image = ((@details['/common/topic/image'] || []).first || {})['id']
     @bg = @sources['bg']
     @poster = @sources['poster']
     @sources['sources'] ||= []
@@ -26,5 +26,4 @@ class SearchController < ApplicationController
       Rails.cache.write(filename[0..7].downcase, @bg) if filename.present?
     end
   end
-
 end

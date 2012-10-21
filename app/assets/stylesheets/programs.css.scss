@@ -15,7 +15,6 @@ body {
   padding: 2%;
   font-size: 1em;
   font-family: "Droid Sans", "sans-serif";
-  overflow:hidden;
   @include text-shadow(0 2px 0.2em black);
 }
 
@@ -75,7 +74,7 @@ input, .programs a {
       background-color: rgba(0, 0, 0, 0.8);
       line-height: 1.5em;
       padding: 0.5em 0.7em;
-      .year, .type, .size {
+      .year, .type, .size, .time {
         float: right;
         color: #888;
       }
@@ -179,35 +178,27 @@ img.bg {
 
 #tv {
   @include clearfix;
-  border-left: 2px solid #222;
-  border-right: 2px solid #222;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  font-size: 0.8em;
   .grid {
     position: relative;
-    .container {
-      margin-left: -10%;
-      width: 400%;
-      .programs {
-        position: relative;
-        height: 4.1em;
-        padding-top: 0.1em;
-        a {
-          position: absolute;
-          height: 4em;
-          @include border-radius(0);
-          img {
-            height: 100%;
-            width: auto;
-          }
+    width: 200%;
+    .programs {
+      position: relative;
+      height: 5.1em;
+      padding-top: 0.1em;
+      a {
+        position: absolute;
+        height: 5em;
+        @include border-radius(0);
+        img {
+          margin-top: -50%;
+        }
+        &:focus {
+          z-index: 2;
         }
       }
-    }
-    .shade {
-      @include box-shadow(2.3em 0 2em -2em black inset, -2.3em 0 2em -2em black inset);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
     }
   }
 }

@@ -9,7 +9,6 @@ $().ready(function() {
         var tid;
         if (section.attr('id') == 'recent')
           var tid = current.attr('id');
-        console.log(tid);
         $('#recent').html(data);
         if (section.attr('id') == 'recent')
           $("#" + tid).focus();

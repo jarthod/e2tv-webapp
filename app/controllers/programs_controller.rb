@@ -2,6 +2,8 @@ class ProgramsController < ApplicationController
 
   def index
     @torrents = Torrent::get_all
+    @schedule = schedule['channels']
+    @start = @schedule.map {|c| Time.parse(c['programs'].first['from']) }.sort.first
   end
 
   def torrent
@@ -15,6 +17,14 @@ class ProgramsController < ApplicationController
   end
 
   def show
+  end
+
+private
+
+  def schedule
+    Rails.cache.fetch("schedule") do
+      JSON.parse(`./script/pgep.py`)
+    end
   end
 
 end

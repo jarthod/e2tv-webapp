@@ -7,6 +7,8 @@ Its a web app meant to be displayed on a connected TV (googleTV, smartTV) that a
 
 It's build in Ruby on rails, with some python and uses an external exec ([e2tv-api](https://github.com/arnoo-sel/e2tv-api)) to fetch data from APIs.
 
+![e2tv home page](http://dl.dropbox.com/u/623972/e2tv.jpg)
+
 Requirements
 ------------
 

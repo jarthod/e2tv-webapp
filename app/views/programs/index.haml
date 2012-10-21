@@ -16,7 +16,7 @@
             - from = Time.parse(show['from'])
             - width = (to - from) / 300.0
             - start = (from - @start) / 300.0
-            - url = show['pluzz']
+            - url = show['pluzz'].first
             = link_to (url || '#'), :style => "width: #{width-0.08}%; left: #{start}%", :class => (url ? nil : 'disabled') do
               = image_tag show['photos']["525x296"]
               %h2

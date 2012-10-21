@@ -43,7 +43,6 @@ if __name__ == '__main__':
             prog['to']   = str(datetime.datetime.strptime(i['ends_at'], "%Y-%m-%dT%H:%M:00+02:00"))
             prog['name'] = i['title']
             prog['photos'] = i['program']['photo']
-            pprint(i)
             for c in i['program']['collections']:
                 if 'url_pluzz_replay' in c and c['url_pluzz_replay']:
                     prog['pluzz'].append(c['url_pluzz_replay'])

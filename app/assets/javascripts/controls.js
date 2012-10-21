@@ -76,6 +76,7 @@ $().ready(function() {
   });
 
   $('#recent a, #results a, #sources a').first().focus();
-  var tv = $('#tv')[0]
-  tv.scrollLeft = ($('#tv .grid').width() - $('#tv').width())/2;
+  var tv = $('#tv .content')[0]
+  if (tv)
+    tv.scrollLeft = ($('#tv .grid').width() - $('#tv .content').width())/2;
 });

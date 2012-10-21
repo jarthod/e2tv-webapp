@@ -23,7 +23,7 @@ class SearchController < ApplicationController
     @streaming = @sources['sources'].select {|s| s['kind'] == 'Streaming'}.first
     @torrents = @sources['sources'].select {|s| s['kind'] == 'Torrent'}
     @torrents.map {|t| t['filename']}.each do |filename|
-      Rails.cache.write(filename, @bg) if filename.present?
+      Rails.cache.write(filename[0..7].downcase, @bg) if filename.present?
     end
   end
 

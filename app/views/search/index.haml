@@ -8,6 +8,7 @@
         - type = result['type'].include?('/film/film') ? :film : :tv
         - image_id = (result['/common/topic/image'].first || {})['id']
         = link_to search_path(:type => type, :id => u(result['mid'])) do
+          = image_tag 'film-reel.jpg'
           - if @poster.present?
             = image_tag @poster
           - elsif image_id

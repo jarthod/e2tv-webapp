@@ -178,10 +178,33 @@ img.bg {
 }
 
 #tv {
-  @include clearfix;
-  border-left: 3px solid black;
-  border-right: 3px solid black;
   font-size: 0.8em;
+  position: relative;
+  .channels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 1em;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.5);
+    .channel {
+      height: 5.1em;
+      padding-top: 0.1em;
+      line-height: 5.1em;
+      text-align: center;
+      width: 5em;
+      img {
+        max-height: 4em;
+        max-width: 5em;
+        vertical-align: middle;
+      }
+    }
+  }
+  .content {
+    overflow: hidden;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+  }
   .grid {
     position: relative;
     width: 200%;

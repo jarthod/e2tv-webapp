@@ -4,22 +4,24 @@
 %section#recent
   = render 'torrent'
 %section#tv
-  .grid
+  .channels
     - @schedule.each do |channel|
-      .programs
-        .name= channel['name']
-        - puts channel['name'].parameterize
-        - channel['programs'].each do |show|
-          - to = Time.parse(show['to'])
-          - from = Time.parse(show['from'])
-          - width = (to - from) / 300.0
-          - start = (from - @start) / 300.0
-          - url = show['pluzz']
-          = link_to (url || '#'), :style => "width: #{width-0.08}%; left: #{start}%", :class => (url ? nil : 'disabled') do
-            = image_tag show['photos']["525x296"]
-            %h2
-              = show['name']
-              .time
-                = from.strftime('%H:%M')
-                \-
-                = to.strftime('%H:%M')
+      .channel= image_tag "channels/#{channel['name'].parameterize}.png"
+  .content
+    .grid
+      - @schedule.each do |channel|
+        .programs
+          - channel['programs'].each do |show|
+            - to = Time.parse(show['to'])
+            - from = Time.parse(show['from'])
+            - width = (to - from) / 300.0
+            - start = (from - @start) / 300.0
+            - url = show['pluzz']
+            = link_to (url || '#'), :style => "width: #{width-0.08}%; left: #{start}%", :class => (url ? nil : 'disabled') do
+              = image_tag show['photos']["525x296"]
+              %h2
+                = show['name']
+                .time
+                  = from.strftime('%H:%M')
+                  \-
+                  = to.strftime('%H:%M')

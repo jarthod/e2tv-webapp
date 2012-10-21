@@ -15,7 +15,6 @@ body {
   padding: 2%;
   font-size: 1em;
   font-family: "Droid Sans", "sans-serif";
-  overflow:hidden;
   @include text-shadow(0 2px 0.2em black);
 }
 
@@ -184,7 +183,7 @@ img.bg {
   font-size: 0.8em;
   .grid {
     position: relative;
-    width: 400%;
+    width: 200%;
     .programs {
       position: relative;
       height: 5.1em;

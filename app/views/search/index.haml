@@ -7,7 +7,7 @@
       - @results.each do |result|
         - type = result['type'].include?('/film/film') ? :film : :tv
         - image_id = (result['/common/topic/image'].first || {})['id']
-        = link_to (type == :film ? search_path(:type => type, :id => u(result['mid'])) : '#'), :class => ('disabled' if type == :tv) do
+        = link_to search_path(:type => type, :id => u(result['mid'])) do
           - if @poster.present?
             = image_tag @poster
           - elsif image_id

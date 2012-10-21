@@ -14,14 +14,16 @@ class SearchController < ApplicationController
       JSON.parse(`../e2tv-api/e2tv --sources --#{params[:type]} #{params[:id]}`)
     end
     @image = (@details['/common/topic/image'].first || {})['id']
+    puts @sources.inspect
     @bg = @sources['bg']
     @poster = @sources['poster']
+    @sources['sources'] ||= []
     @trailer = @sources['sources'].select {|s| s['kind'] == 'Trailer'}.first
     @rental = @sources['sources'].select {|s| s['kind'] == 'Rental'}.first
     @streaming = @sources['sources'].select {|s| s['kind'] == 'Streaming'}.first
     @torrents = @sources['sources'].select {|s| s['kind'] == 'Torrent'}
     @torrents.map {|t| t['filename']}.each do |filename|
-      Rails.cache.write(filename, @bg)
+      Rails.cache.write(filename, @bg) if filename.present?
     end
   end
 

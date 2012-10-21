@@ -2,7 +2,7 @@
   = image_tag @bg, :class => 'bg'
 %section#cover
   %h1= @details['name']
-  %p.directors= @details['directed_by'].join(', ')
+  %p.directors= (@details['directed_by'] || @details['program_creator'] || []).join(', ')
   - if @poster.present?
     = image_tag @poster
   - else
@@ -29,11 +29,16 @@
         %h2
           Streaming
           .type not available
-    - torrent = @torrents.sort {|t| t['seed']}.last if @torrents.any?
+    - torrent = @torrents.sort {|a, b| a['seed'] <=> b['seed']}.last if @torrents.any?
     = link_to (torrent ? download_path(:url => torrent['url']) : '#'), :class => ['torrent', ('disabled' if torrent.nil?)].join(' ') do
-      = image_tag "movies_io-logo.png"
+      - if torrent and torrent['service'] == 'Movies.io'
+        = image_tag "movies_io-logo.png"
+      - else
+        = image_tag "dailytvtorrents.jpg"
       %h2
         Download
+        - if torrent and torrent['num']
+          = torrent['num']
         - if torrent.present?
           .type= torrent['quality']
         - else

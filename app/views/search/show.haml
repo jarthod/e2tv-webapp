@@ -7,7 +7,7 @@
   %p.directors= (@details['directed_by'] || @details['program_creator'] || []).join(', ')
   - if @poster.present?
     = image_tag @poster
-  - else
+  - elsif @image
     = image_tag "https://usercontent.googleapis.com/freebase/v1/image#{@image}?maxwidth=500"
 %section#sources
   .programs

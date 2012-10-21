@@ -14,8 +14,8 @@
           - channel['programs'].each do |show|
             - to = Time.parse(show['to'])
             - from = Time.parse(show['from'])
-            - width = (to - from) / 300.0
-            - start = (from - @start) / 300.0
+            - width = (to - from) / 600.0
+            - start = (from - @start) / 600.0
             - url = show['pluzz'].first
             - url ||= tvsearch_path(:q => show['name'])
             = link_to (url || '#'), :style => "width: #{width-0.08}%; left: #{start}%", :class => (url ? nil : 'disabled') do

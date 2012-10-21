@@ -28,7 +28,7 @@ def get_channel_prog(chan_id):
     _from = _from.isoformat()
     to = datetime.datetime.now() + datetime.timedelta(hours=4)
     to = to.isoformat()
-    url = "http://pgep.francetv.fr/broadcasts/?filters=channel:%s&format=json&from=%s&to=%s" % (chan_id, _from, to)
+    url = "http://pgep.francetv.fr/broadcasts/?filters=channel:%s&format=json&from=%s&to=%s&limit=1000" % (chan_id, _from, to)
     return get_json(url)
 
 

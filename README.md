@@ -21,7 +21,7 @@ You need:
 How to run
 ----------
 
-    git clone git@github.com:jarthod/e2tv-webapp.git
+    git clone git://github.com/jarthod/e2tv-webapp.git
     cd e2tv-webapp
     git submodule update --init
     bundle install

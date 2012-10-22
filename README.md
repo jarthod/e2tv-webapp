@@ -14,12 +14,15 @@ Requirements
 
 You need:
 
-- transmission-daemon
-- ruby, python
-- qt5-base to exec e2tv-api
+* transmission-daemon
+* ruby 1.9.3, python
+* qt5-base to exec e2tv-api
 
 How to run
 ----------
 
-- bundle install
-- bundle exec thin start
+    git clone git@github.com:jarthod/e2tv-webapp.git
+    cd e2tv-webapp
+    git submodule update --init
+    bundle install
+    bundle exec thin start

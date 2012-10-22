@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'sqlite3'
 gem 'haml'
-gem 'transmission-rpc', :git => 'git@hush-hush.me:transmission-rpc'
+gem 'transmission-rpc', :git => 'git@github.com:jarthod/transmission-rpc'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

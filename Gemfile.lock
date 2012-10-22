@@ -1,6 +1,6 @@
 GIT
-  remote: git@hush-hush.me:transmission-rpc
-  revision: d5cad5fc885fb34f22e8ede5b3f91acb181705a1
+  remote: git@github.com:jarthod/transmission-rpc
+  revision: 00116097df1122cb19e02bedf860845da7af4648
   specs:
     transmission-rpc (0.1.1)
       activesupport

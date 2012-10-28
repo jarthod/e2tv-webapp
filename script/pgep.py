@@ -39,8 +39,8 @@ if __name__ == '__main__':
         data = get_channel_prog(v)
         for i in data['results']:
             prog = {'pluzz': []}
-            prog['from'] = str(datetime.datetime.strptime(i['starts_at'], "%Y-%m-%dT%H:%M:00+02:00"))
-            prog['to']   = str(datetime.datetime.strptime(i['ends_at'], "%Y-%m-%dT%H:%M:00+02:00"))
+            prog['from'] = str(datetime.datetime.strptime(i['starts_at'], "%Y-%m-%dT%H:%M:00+01:00"))
+            prog['to']   = str(datetime.datetime.strptime(i['ends_at'], "%Y-%m-%dT%H:%M:00+01:00"))
             prog['name'] = i['title']
             prog['photos'] = i['program']['photo']
             for c in i['program']['collections']:
